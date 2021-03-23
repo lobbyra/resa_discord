@@ -1,5 +1,6 @@
 import time
 import random
+import asyncio
 import requests
 from datetime import datetime
 
@@ -40,11 +41,11 @@ def get_cookie():
     f = open("cookie.txt", "r")
     return (f.readline())
 
-def loop_check(ts, cookie):
+async def loop_check(ts, cookie):
     print("Enter in loop check")
     print("Start = " + str(ts[0]) + " -> " + str(datetime.fromtimestamp(ts[0])))
     print("End = " + str(ts[1]) + " -> " + str(datetime.fromtimestamp(ts[1])))
     while (is_new_week(ts, cookie) != True):
-        time.sleep(1)
+        await asyncio.sleep(60 * 10) # 10 minutes
     print("Exit loop check\n")
     pass
