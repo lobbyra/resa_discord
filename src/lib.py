@@ -28,13 +28,13 @@ def is_new_week(ts, cookie):
     # f.write(str(json.dumps(response.json()))) # content in a file #
 
     # Production-destinated condition
-    # if (response.json() == []):
-    #     return (False)
-    # else:
-    #     return (True)
+    if (response.json() == []):
+        return (False)
+    else:
+        return (True)
 
     # Simulate real cases
-    return (bool(random.randint(0, 42) % 2)) 
+    # return (bool(random.randint(0, 42) % 2)) 
 
 def get_cookie():
     f = open("cookie.txt", "r")
