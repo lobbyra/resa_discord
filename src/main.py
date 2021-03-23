@@ -63,5 +63,5 @@ async def on_message(message):
 
 print("starting srv")
 client.loop.create_task(global_loop())
-client.run("ODIzODcxOTQyODYzNzQ5MTYx.YFnIiQ.wAixlo8toJCVbF35dRb6ajdf8zE")
+client.run(TOKEN)
 
