@@ -43,14 +43,25 @@ async def global_loop():
     cookie = get_cookie()
     channel = discord.utils.get(client.get_all_channels(), name='general')
     while (True):
-        loop_check(ts, cookie) # will send request to 42 if slots is avalaible
-        msg = "🚨 @ everyone La nouvelle semaine de reservation est arrivé ! 🚨"
+        await loop_check(ts, cookie) # will send request to 42 if slots is avalaible
+        msg = "🚨 @everyone La nouvelle semaine de reservation est arrivé ! 🚨"
         await channel.send(msg)
         ts = forward_saved(ts)
 
 @client.event
 async def on_ready():
     print(colored(f'{client.user} has connected to Discord!\n', 'green'))
+    channel = discord.utils.get(client.get_all_channels(), name='general')
+    msg = "🤖 I'm started and looking for new slots !"
+    await channel.send(msg)
 
+@client.event
+async def on_message(message):
+    if (message.content == "!alive"):
+        msg = "🤖 Yes i'm alive and i'm waiting for slots !"
+        await message.channel.send(msg)
+
+print("starting srv")
 client.loop.create_task(global_loop())
-client.run(TOKEN)
+client.run("ODIzODcxOTQyODYzNzQ5MTYx.YFnIiQ.wAixlo8toJCVbF35dRb6ajdf8zE")
+
